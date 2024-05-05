@@ -42,6 +42,7 @@ const initialFacts = [
     { name: "news", color: "#8b5cf6" },
   ];
 
+
 //Selecting DOM Elements
 const btn=document.querySelector('.btn-open');
 const form=document.querySelector('.fact-form');
@@ -62,6 +63,8 @@ async function loadFacts(){
 )
     const data=await res.json();
     console.log(data);
+    //const filteredData=data.filter((fact)=>fact.category==='society');
+    //console.log(filteredData);
     createFactsList(data);
 };
 
@@ -73,7 +76,8 @@ function createFactsList(dataArray){
         <p>${fact.text}
             <a class="source" href=${fact.source} target="_blank">(Source)</a>
         </p>
-            <span class="tag" style="background-color: #3b82f6">${fact.category}</span>
+            <span class="tag" style="background-color:${
+                CATEGORIES.find((cat)=>cat.name===fact.category).color}">${fact.category}</span>
         </li>`);
     
     const html = htmlArr.join('');
@@ -91,6 +95,7 @@ btn.addEventListener('click',function(){
     btn.textContent='Share a Fact';
     }
 });
+
 
 
 function calcFactAge(year){
