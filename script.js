@@ -73,7 +73,7 @@ async function loadFacts(){
 function createFactsList(dataArray){
     const htmlArr=dataArray.map(
         (fact)=>`<li class="fact">${fact.text}
-        <p>${fact.text}
+        <p>
             <a class="source" href=${fact.source} target="_blank">(Source)</a>
         </p>
             <span class="tag" style="background-color:${
